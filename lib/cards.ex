@@ -24,6 +24,16 @@ defmodule Cards do
 
   @doc """
     Takes a deck and a card and returns a boolean if the card can be found in the deck.
+
+  ## Examples
+
+      iex> deck = Cards.create_deck
+      iex> Cards.contains?(deck, "Ace of Spades")
+      true
+
+      iex> deck = Cards.create_deck
+      iex> Cards.contains?(deck, "Ten of Squares")
+      false
   """
   def contains?(deck, card) do
     Enum.member?(deck, card)
@@ -33,6 +43,14 @@ defmodule Cards do
     Divides a deck into a hand and the remainder of the deck.
     The `hand_size` argument indiciates how many cards should be in a hand.
     Returns a tuple.
+
+  ## Examples
+
+      iex> deck = Cards.create_deck
+      iex> {hand, deck} = Cards.deal(deck, 1)
+      iex> hand
+      ["Ace of Spades"]
+        
   """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
